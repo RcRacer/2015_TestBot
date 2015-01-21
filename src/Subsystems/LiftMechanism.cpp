@@ -33,3 +33,14 @@ void LiftMechanism::InitDefaultCommand() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
+void LiftMechanism::Raise() {
+	liftMotor -> Set(0.25);
+}
+
+void LiftMechanism::Lower() {
+	liftMotor -> Set(-0.25);
+}
+
+void LiftMechanism::Stop() {
+	liftMotor -> Set(0);
+}
