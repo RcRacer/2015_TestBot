@@ -21,7 +21,7 @@ RaiseLift::RaiseLift() {
 
 // Called just before this Command runs the first time
 void RaiseLift::Initialize() {
-	
+	Robot::liftMechanism->Raise();
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -36,11 +36,11 @@ bool RaiseLift::IsFinished() {
 
 // Called once after isFinished returns true
 void RaiseLift::End() {
-	
+	Robot::liftMechanism->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void RaiseLift::Interrupted() {
-
+	End();
 }
