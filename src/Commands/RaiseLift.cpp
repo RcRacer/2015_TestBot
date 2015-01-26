@@ -21,12 +21,12 @@ RaiseLift::RaiseLift() {
 
 // Called just before this Command runs the first time
 void RaiseLift::Initialize() {
-	Robot::liftMechanism->Raise();
+
 }
 
 // Called repeatedly when this Command is scheduled to run
 void RaiseLift::Execute() {
-	
+	Robot::liftMechanism->Raise();
 }
 
 // Make this return true when this Command no longer needs to run execute()

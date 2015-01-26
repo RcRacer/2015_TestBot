@@ -26,7 +26,7 @@ void LowerLift::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void LowerLift::Execute() {
-	
+	Robot::liftMechanism->Lower();
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -36,11 +36,11 @@ bool LowerLift::IsFinished() {
 
 // Called once after isFinished returns true
 void LowerLift::End() {
-	
+	Robot::liftMechanism->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void LowerLift::Interrupted() {
-
+	End();
 }
