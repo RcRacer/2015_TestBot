@@ -38,11 +38,15 @@ void LiftMechanism::InitDefaultCommand() {
 // here. Call these from Commands.
 
 void LiftMechanism::Raise() {
-	liftMotor -> Set(0.25);
+	while (upperLimit->Get()) {
+		liftMotor -> Set(0.25);
+	}
 }
 
 void LiftMechanism::Lower() {
-	liftMotor -> Set(-0.25);
+	while (lowerLimit->Get()) {
+		liftMotor -> Set(-0.25);
+	}
 }
 
 void LiftMechanism::Stop() {
