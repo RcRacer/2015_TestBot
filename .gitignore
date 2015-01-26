@@ -3,4 +3,8 @@ Binaries/
 .metadata
 *~
 target/
+*.o<<<<<<< HEAD
 *.o
+=======
+*.o
+>>>>>>> origin/master
