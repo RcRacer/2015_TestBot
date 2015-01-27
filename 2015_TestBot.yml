@@ -159,7 +159,7 @@ Children:
       Name: UpperLimit
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: None}
+        name: Default Command, type: Command, validators: null, value: LiftWithJoysticks}
     Base: Subsystem
     Name: LiftMechanism
   Properties: {}
@@ -169,13 +169,23 @@ Children:
   - Children: []
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
-        choices: ['0', '1', '2', '3', '4', '5']
+        choices: &id006 ['0', '1', '2', '3', '4', '5']
         default: 1
         name: Number
-        validators: [Joystick]
-        value: '0'
+        validators: &id007 [Joystick]
+        value: '1'
     Base: Joystick
     Name: DriveStick
+  - Children: []
+    Properties:
+      Number: !!robotbuilder.data.properties.ChoicesProperty
+        choices: *id006
+        default: 1
+        name: Number
+        validators: *id007
+        value: '0'
+    Base: Joystick
+    Name: GamePad
   Properties: {}
   Base: OI
   Name: Operator Interface
@@ -204,6 +214,14 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: LowerLift
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: LiftMechanism}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: LiftWithJoysticks
   Properties: {}
   Base: Commands
   Name: Commands
