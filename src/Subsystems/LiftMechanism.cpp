@@ -38,8 +38,11 @@ void LiftMechanism::InitDefaultCommand() {
 
 void LiftMechanism::SetSpeed(Joystick* stick) {
 	// while (upperLimit->Get() & lowerLimit->Get()) {
-	liftMotor -> Set(stick -> GetTwist());
-	//}
+	if (upperLimit->Get() && lowerLimit->Get()) {
+	liftMotor -> Set(stick->GetThrottle());
+	}else{
+		liftMotor->Set(0);
+	}
 }
 
 // Put methods for controlling this subsystem
