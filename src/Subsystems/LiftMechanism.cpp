@@ -38,9 +38,22 @@ void LiftMechanism::InitDefaultCommand() {
 
 void LiftMechanism::SetSpeed(Joystick* stick) {
 	// while (upperLimit->Get() & lowerLimit->Get()) {
-	if (upperLimit->Get() && lowerLimit->Get()) {
-	liftMotor -> Set(stick->GetThrottle());
-	}else{
+
+	double dir = stick->GetThrottle();
+
+	// check the value of dir
+	// if positive then check upperLimit
+	// if negative then check lower limit
+	if (dir>0 && upperLimit->Get())
+	{
+		liftMotor->Set(dir);
+	}
+	else if (dir<0 && lowerLimit->Get())
+	{
+		liftMotor->Set(dir);
+	}
+	else
+	{
 		liftMotor->Set(0);
 	}
 }
